@@ -1,0 +1,5 @@
+generators:
+  - policy-generator-config.yaml
+
+resources:
+  - raw-policies/
