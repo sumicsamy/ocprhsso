@@ -8,12 +8,11 @@ policyDefaults:
   remediationAction: enforce
   complianceType: musthave
   severity: medium
+  placement:
+    clusterSelectors:
+      matchLabels:
+          local-cluster: "true"
 
-placement:
-  name: local-placement
-  clusterSelector:
-    matchLabels:
-      local-cluster: "true"
 
 policies:
   - name: install-rhsso
