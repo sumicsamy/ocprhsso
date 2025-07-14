@@ -7,11 +7,13 @@ metadata:
   namespace: rhsso
 spec:
   tracing:
-    enabled: true
+    enabled: false
   update:
     strategy: RecreateOnImageChange
   instances: 1
   http:
     httpEnabled: true
   hostname:
-    strict: false  
+    strict: false
+  ingress:
+    enabled: true  
