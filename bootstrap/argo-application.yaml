@@ -8,9 +8,9 @@ spec:
     - list:
         elements:
           - name: rbac
-            path: rbac/argocd-acm-policy-access
+            path: gitops-acm/base/rbac
           - name: rhsso
-            path: policies/rhsso-install
+            path: gitops-acm/base/rhsso-install
   template:
     metadata:
       name: '{{name}}'
@@ -20,8 +20,6 @@ spec:
         repoURL:  https://github.com/sumicsamy/ocprhsso.git
         targetRevision: main
         path: '{{path}}'
-        directory:
-          recurse: true
       destination:
         server: https://kubernetes.default.svc
         namespace: policies
