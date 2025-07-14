@@ -22,7 +22,7 @@ policies:
 
   - name: install-acs-managed
     manifests:
-      - path: raw-policies/configure-keycloak-instance.yaml
+      - path: managed-cluster/secured-cluster.yaml
     placement:
     clusterSelectors:
     matchExpressions:
