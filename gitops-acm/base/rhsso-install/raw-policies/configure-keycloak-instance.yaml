@@ -1,4 +1,4 @@
-apiVersion: keycloak.org/v1alpha1
+apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
 metadata:
   name: rhsso
@@ -6,10 +6,12 @@ metadata:
     app: sso
   namespace: rhsso
 spec:
-  externalAccess:
+  tracing:
     enabled: true
-  keycloakDeploymentSpec:
-    imagePullPolicy: Always
-  postgresDeploymentSpec:
-    imagePullPolicy: Always
+  update:
+    strategy: RecreateOnImageChange
   instances: 1
+  http:
+    httpEnabled: true
+  hostname:
+    strict: false  
