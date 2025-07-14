@@ -18,3 +18,7 @@ policies:
   - name: install-rhsso
     manifests:
       - path: raw-policies/install-rhsso-subscription.yaml
+
+  - name: configure-rhsso
+    manifests:
+      - path: raw-policies/configure-keycloak-instance.yaml
