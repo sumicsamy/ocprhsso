@@ -5,15 +5,14 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-    - list:
-        elements:
-          - name: rbac
-            path: gitops-acm/base/rbac
-          - name: rhsso
-            path: gitops-acm/base/rhsso-install
+  - git:
+        repoURL: https://github.com/sumicsamy/ocprhsso.git
+        revision: main
+        directories:
+          - path: gitops-acm/base/*
   template:
     metadata:
-      name: '{{name}}'
+      name: '{{path.basename}}'
     spec:
       project: default
       source:

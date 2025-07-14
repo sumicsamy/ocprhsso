@@ -1,0 +1,42 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: rhacs-operator-group
+  namespace: rhacs-operator
+spec:
+  targetNamespaces:
+    - rhacs-operator
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: rhacs-operator
+  namespace: rhacs-operator
+spec:
+  channel: stable
+  name: rhacs-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+---
+apiVersion: platform.stackrox.io/v1alpha1
+kind: Central
+metadata:
+  name: stackrox-central-services
+  namespace: rhacs-operator
+spec:
+  route:
+    enabled: true
+---
+apiVersion: platform.stackrox.io/v1alpha1
+kind: SecuredCluster
+metadata:
+  name: secured-cluster-hub
+  namespace: rhacs-operator
+spec:
+  clusterName: local-cluster
+  central:
+    endpoint: central-rhacs-operator.apps.ocppoc.sandbox3276.opentlc.com
+  admissionControl:
+    listenOnCreates: true
+    listenOnUpdates: false
