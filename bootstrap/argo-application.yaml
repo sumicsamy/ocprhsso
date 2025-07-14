@@ -1,21 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: rhsso-policy-gitops
+  name: acm-hub-policies
   namespace: openshift-gitops
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/sumicsamy/ocprhsso.git
-    targetRevision: main
-    path: gitops-acm/base/
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: policies
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
+  generators:
+    - list:
+        elements:
+          - name: rbac
+            path: rbac/argocd-acm-policy-access
+          - name: rhsso
+            path: policies/rhsso-install
+  template:
+    metadata:
+      name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL:  https://github.com/sumicsamy/ocprhsso.git
+        targetRevision: main
+        path: '{{path}}'
+        directory:
+          recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: policies
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+

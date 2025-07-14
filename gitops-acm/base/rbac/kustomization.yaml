@@ -1,3 +1,4 @@
 resources:
   - policy-admin-role.yaml
   - policy-admin-rolebinding.yaml
+namespace: policies
