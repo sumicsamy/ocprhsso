@@ -4,7 +4,7 @@ metadata:
   name: rhbk-operator
   namespace: rhsso
 spec:
-  channel: stable
+  channel: stable-v26.2
   name: rhbk-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
