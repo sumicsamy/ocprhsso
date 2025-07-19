@@ -12,4 +12,10 @@ rules:
   resources:
   - routes
   verbs:
-  - "*"  
+  - "*"
+- apiGroups: 
+  - "apps"
+  resources: 
+  - "deployments"
+  verbs:
+  - "*"
