@@ -1,4 +1,6 @@
 resources:
   - policy-admin-role.yaml
   - policy-admin-rolebinding.yaml
+  - argo-additional-role.yaml
+  - argo-additional-rolebinding.yaml
 namespace: policies

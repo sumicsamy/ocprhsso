@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: argocd-additional-access
+rules:
+- apiGroups: [""]
+  resources: ["services"]
+  verbs:
+  - "*"
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - "*"  

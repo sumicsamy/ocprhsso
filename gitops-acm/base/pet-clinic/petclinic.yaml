@@ -4,7 +4,6 @@ kind: Service
 metadata:
   name: petclinic
 spec:
-  type: NodePort
   ports:
     - port: 80
       targetPort: 8080
@@ -62,3 +61,17 @@ spec:
             sources:
               - secret:
                   name: demo-db
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: petclinic
+spec:
+  to:
+    kind: Service
+    name: petclinic
+  port:
+    targetPort: 80
+  tls:
+    termination: edge
