@@ -3,7 +3,7 @@ resources:
   - petclinic.yaml
   - petclinic-db.yaml
   - external-secret.yaml
-  - secret-store.yaml
+  - cluster-secret-store.yaml
   - service-account.yaml
   - service.yaml
   - route.yaml
