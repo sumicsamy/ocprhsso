@@ -1,4 +1,4 @@
 resources:
   - namespace.yaml
   - og.yaml
-  - subscription.yaml
+  - https://raw.githubusercontent.com/bugbiteme/ossm-3-demo/refs/heads/main/resources/subscriptions.yaml
