@@ -4,7 +4,7 @@ metadata:
   name: argocd-additional-access
 rules:
 - apiGroups: [""]
-  resources: ["services"]
+  resources: ["services","serviceaccounts"]
   verbs:
   - "*"
 - apiGroups:
@@ -17,5 +17,12 @@ rules:
   - "apps"
   resources: 
   - "deployments"
+  verbs:
+  - "*"
+- apiGroups:
+  - "external-secrets.io"
+  resources:
+    - "secretstores"
+    - "externalsecrets"
   verbs:
   - "*"

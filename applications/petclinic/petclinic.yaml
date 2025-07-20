@@ -15,6 +15,7 @@ spec:
       labels:
         app: petclinic
     spec:
+      serviceAccountName: eso-sa
       containers:
         - name: workload
           image: dsyer/petclinic

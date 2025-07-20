@@ -25,6 +25,7 @@ spec:
       labels:
         app: demo-db
     spec:
+      serviceAccountName: eso-sa
       containers:
         - image: postgres:17.5
           name: postgresql
