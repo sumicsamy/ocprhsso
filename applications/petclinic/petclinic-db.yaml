@@ -26,9 +26,13 @@ spec:
         app: demo-db
     spec:
       serviceAccountName: eso-sa
+      securityContext:
+        fsGroup: 1001
       containers:
         - image: postgres:17.5
           name: postgresql
+          securityContext:
+            runAsUser: 1001
           env:
             - name: POSTGRES_USER
               valueFrom:
