@@ -26,25 +26,27 @@ spec:
         app: demo-db
     spec:
       serviceAccountName: eso-sa
-      securityContext:
-        fsGroup: 1001
+      volumes:
+        - name: data
+          emptyDir: {}
       containers:
-        - image: postgres:17.5
+        - image: registry.redhat.io/rhel8/postgresql-15
           name: postgresql
-          securityContext:
-            runAsUser: 1001
+          volumeMounts:
+          - name: data
+            mountPath: /var/lib/postgresql/data
           env:
-            - name: POSTGRES_USER
+            - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
                   name: demo-db
                   key: username
-            - name: POSTGRES_PASSWORD
+            - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: demo-db
                   key: password
-            - name: POSTGRES_DB
+            - name: POSTGRESQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: demo-db
